@@ -1,0 +1,85 @@
+#include <Arduino.h>
+#include <ESP8266WiFi.h>
+#include <JsonListener.h>
+#include <time.h>
+#include "OpenWeatherMapCurrent.h"
+
+#define RED_PIN D2 // 빨간색 LED 출력
+#define GREEN_PIN D3 // 초록색 LED 출력
+#define BLUE_PIN D4 // 파란색 LED 출력
+
+OpenWeatherMapCurrent client;
+
+String OPEN_WEATHER_MAP_APP_ID = "eaa78a58886efedcc4fe5a9b3ae5737a"; // 사용자 고유 OpenWeatherMap API key
+String OPEN_WEATHER_MAP_LOCATION_ID = "1835327"; // 대구 지역 ID
+String OPEN_WEATHER_MAP_LANGUAGE = "kr"; // 한국 지역 
+
+boolean IS_METRIC = true;
+
+int i = 0; //matrix 배열의 행의 위치 변경 용도
+
+boolean matrix[3][3] = {
+  {false, true, true},//RED
+  {true, false, true},//GREEN
+  {true, true, false},//BLUE                   
+};
+                     
+void mix(int row) {
+    digitalWrite(RED_PIN, matrix[row][0]);
+    digitalWrite(GREEN_PIN, matrix[row][1]);
+    digitalWrite(BLUE_PIN, matrix[row][2]);
+}
+
+const char* ESP_HOST_NAME = "esp-" + ESP.getFlashChipId();
+const char* WIFI_SSID     = "AndroidHotspot5293";
+const char* WIFI_PASSWORD = "parkss132";
+
+WiFiClient wifiClient;
+
+void connectWifi() {
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("Connecting to ");
+  Serial.println(WIFI_SSID);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.println("WiFi connected!");
+  Serial.println(WiFi.localIP());
+  Serial.println();
+}
+
+void setup() {
+  pinMode(RED_PIN, OUTPUT);
+  pinMode(GREEN_PIN, OUTPUT);
+  pinMode(BLUE_PIN, OUTPUT);
+  
+  Serial.begin(115200);
+  delay(500);
+  connectWifi();
+  Serial.println("------------------------------------");
+}
+
+void loop() {
+  OpenWeatherMapCurrentData data;
+  client.setLanguage(OPEN_WEATHER_MAP_LANGUAGE);
+  client.setMetric(IS_METRIC);
+  client.updateCurrentById(&data, OPEN_WEATHER_MAP_APP_ID, OPEN_WEATHER_MAP_LOCATION_ID);
+
+  Serial.printf("%.2f",data.temp); // 온도값 출력
+
+  if(data.temp<15)
+  {  
+    mix(i+2); //파란색 출력  
+  }
+  else if(15<=data.temp<25)
+  {
+    mix(i+1); //초록색 출력
+  }
+  else
+  {
+    mix(i); //빨간색 출력
+  }
+delay(1800000); // 30분마다 온도 변경 확인
+}
