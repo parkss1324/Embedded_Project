@@ -1,4 +1,4 @@
-# Open_Whether_API
+# Open_Whether_API를 활용한 LED 구름
 Whether API의 open source를 활용하여 대구 지역의 온도값을 구현한 소스 코드입니다.  
 
 ## 👨‍🏫 프로젝트 소개
