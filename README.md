@@ -30,8 +30,13 @@ Whether API의 open source를 활용하여 대구 지역의 온도값을 구현�
 <img width="428" height="383" alt="Image" src="https://github.com/user-attachments/assets/dbf8dced-8cca-4300-b3ae-fb535bff2c1d" /><br><br>
   
 - LED의 RED, GREEN, BLUE의 값들을 각각 하나씩 ON되게 배열로 구성합니다.
-  
+
+<img width="321" height="257" alt="Image" src="https://github.com/user-attachments/assets/90a72949-b6bb-4c7a-92ec-e3cf1f3c57b2" /><br><br>
+
 - 15도 미만의 온도에서는 BLUE, 15도 이상 25도 이하의 온도에서 GREEN, 25도를 초과한 온도에서는 RED를 출력하는 조건문을 만듭니다.
+
+<img width="343" height="321" alt="Image" src="https://github.com/user-attachments/assets/d68eee36-a53c-442b-88d4-a8517b6642a4" /><br><br>
+
   
 - 결과를 확인합니다.
   
