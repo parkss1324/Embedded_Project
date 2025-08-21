@@ -22,10 +22,21 @@ Whether API의 open source를 활용하여 대구 지역의 온도값을 구현�
 
 ## 📌 주요 기능
 - 사용자의 API 키와 한국 지역, 대구 지역의 고유 값들을 받아옵니다.
+  
+<img width="752" height="96" alt="Image" src="https://github.com/user-attachments/assets/d67ace7e-a724-4d50-b0fa-3a4d4c045ae6" /><br><br>
+
 - WIFI ID와 PASSWORD를 받아옵니다.
+  
+<img width="428" height="383" alt="Image" src="https://github.com/user-attachments/assets/dbf8dced-8cca-4300-b3ae-fb535bff2c1d" /><br><br>
+  
 - LED의 RED, GREEN, BLUE의 값들을 각각 하나씩 ON되게 배열로 구성합니다.
+  
 - 15도 미만의 온도에서는 BLUE, 15도 이상 25도 이하의 온도에서 GREEN, 25도를 초과한 온도에서는 RED를 출력하는 조건문을 만듭니다.
-- 딜레이를 써서 30분마다 기록이 갱신되게 만듭니다.
+  
+- 결과를 확인합니다.
+  
+<img width="366" height="271" alt="Image" src="https://github.com/user-attachments/assets/34d4277f-0708-4ab3-b251-f17c83c8142e" />
+
 
 ## ✒️ API
 - API 개념 및 장단점: [https://terms.naver.com/entry.naver?docId=1179553&cid=40942&categoryId=32837](https://www.hanl.tech/blog/api%EB%9E%80-api%EC%9D%98-%EC%A0%95%EC%9D%98%EC%99%80-%EC%A2%85%EB%A5%98-%EC%9E%A5%EB%8B%A8%EC%A0%90/)
